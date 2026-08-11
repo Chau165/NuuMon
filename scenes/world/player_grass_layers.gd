@@ -3,7 +3,6 @@ extends MultiMeshInstance3D
 const MEDIUM_GRASS_SCENE: PackedScene = preload("res://asset/Stylized Nature MegaKit[Standard]/glTF/Grass_Common_Short.gltf")
 const TALL_GRASS_SCENE: PackedScene = preload("res://asset/Stylized Nature MegaKit[Standard]/glTF/Grass_Wispy_Tall.gltf")
 const GRASS_SHADER: Shader = preload("res://scenes/world/stylized_grass.gdshader")
-const GRASS_TEXTURE_IDS := [2, 3]
 const BENCHMARK_CAPTURE_ENABLED := false
 const BENCHMARK_CAPTURE_TAG := "after_final_60fps"
 const TURF_MESH_HEIGHT := 0.13
@@ -29,6 +28,7 @@ const TURF_MESH_HEIGHT := 0.13
 @export var tall_height_range := Vector2(0.42, 0.72)
 
 var _terrain: Terrain3D
+var _biome: Node
 var _player: Node3D
 var _medium_layer: MultiMeshInstance3D
 var _tall_layer: MultiMeshInstance3D
@@ -65,10 +65,12 @@ func _initialize() -> void:
 		return
 
 	_terrain = world.find_child("Terrain3D", true, false) as Terrain3D
+	_biome = world.find_child("BiomeEligibility", true, false)
 	_player = world.find_child("PlayerPrototype", true, false) as Node3D
-	if _terrain == null or _terrain.data == null or _player == null:
-		push_warning("PlayerGrassLayers could not find Terrain3D or PlayerPrototype.")
+	if _terrain == null or _terrain.data == null or _biome == null or _player == null:
+		push_warning("PlayerGrassLayers could not find Terrain3D, BiomeEligibility, or PlayerPrototype.")
 		return
+	_biome.configure(_terrain)
 
 	var turf_mesh := _create_turf_mesh()
 	var medium_mesh := _load_first_mesh(MEDIUM_GRASS_SCENE)
@@ -371,16 +373,7 @@ func _apply_instances(
 
 
 func _get_grass_texture_weight(world_position: Vector3) -> float:
-	var texture_info := _terrain.data.get_texture_id(world_position)
-	var base_id := int(texture_info.x)
-	var overlay_id := int(texture_info.y)
-	var blend := texture_info.z
-	var weight := 0.0
-	if base_id in GRASS_TEXTURE_IDS:
-		weight += 1.0 - blend
-	if overlay_id in GRASS_TEXTURE_IDS:
-		weight += blend
-	return clampf(weight, 0.0, 1.0)
+	return _biome.get_grass_density_multiplier(world_position)
 
 
 func _basis_from_normal(terrain_normal: Vector3, yaw_angle: float) -> Basis:

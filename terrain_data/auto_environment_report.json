@@ -6,7 +6,7 @@
 		"Bush_1_A_Color1": 79,
 		"Bush_Common": 303,
 		"Bush_Small": 71,
-		"CommonTree_1": 296,
+		"CommonTree_1": 401,
 		"CommonTree_2": 324,
 		"Flower_1_Clump": 54,
 		"Flower_3_Group": 119,
@@ -23,8 +23,7 @@
 		"Rock_2_A_Color1": 126,
 		"Rock_Medium_1": 216,
 		"Rock_Medium_2": 252,
-		"Rock_Medium_3": 216,
-		"Tree_1_A_Color1": 105
+		"Rock_Medium_3": 216
 	},
 	"instances_by_biome": {
 		"Alpine": 411,
@@ -62,16 +61,15 @@
 		"forest_clearings": [
 			"(-260.0, 230.0)",
 			"(245.0, 100.0)",
-			"(-340.0, -120.0)",
-			"(135.0, -315.0)"
+			"(110.0, -330.0)"
 		],
-		"main_corridor_half_width_m": 48.0,
-		"runtime_generation": false,
+		"main_corridor_half_width_m": 0.0,
+		"runtime_generation": true,
 		"scale_variation": [
 			0.85,
 			1.15
 		],
-		"spawn_clear_radius_m": 68.0
+		"spawn_clear_radius_m": 15.0
 	},
 	"rejected_candidates": {
 		"clearing": 40,
@@ -103,10 +101,36 @@
 		"Rock_2_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Rock_2_A_Color1.gltf",
 		"Rock_Medium_1": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_1.gltf",
 		"Rock_Medium_2": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_2.gltf",
-		"Rock_Medium_3": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_3.gltf",
-		"Tree_1_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Tree_1_A_Color1.gltf"
+		"Rock_Medium_3": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_3.gltf"
 	},
-	"strategy": "Saved biome and 512m chunk grouped MultiMesh decoration",
+	"runtime_forest_cover": {
+		"script": "res://scenes/world/island_forest_cover.gd",
+		"green_texture_ids": [2, 3],
+		"beach_spawn_preserved": true,
+		"coastal_forest_edge_distance_m": [14, 118],
+		"curved_entrance_length_m": 112,
+		"generated_instances": {
+			"large_tree": 425,
+			"medium_tree": 4101,
+			"small_tree": 1426,
+			"coastal_tree_subset": 252,
+			"bush": 1469,
+			"fern_and_plant": 2555,
+			"ground_detail": 773,
+			"rock": 276,
+			"dead_tree": 49
+		},
+		"hidden_legacy_instances": 2718,
+		"runtime_visibility_m": {
+			"canopy": 180,
+			"medium_tree": 140,
+			"sapling": 72,
+			"understory": 88,
+			"ground_detail": 55
+		},
+		"stable_deep_forest_fps": 60
+	},
+	"strategy": "Saved grass plus runtime 128m MultiMesh chunks, beach-to-forest staging, clustered forest and three intentional clearings",
 	"total_instances": 7759,
 	"unavailable_categories": {
 		"logs_stumps": "No matching .gltf assets found in the installed packs"
