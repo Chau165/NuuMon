@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqqs5j4lajjkd"
-path.s3tc="res://.godot/imported/Leaves.png-253191edb5e685e7b5be35324953d619.s3tc.ctex"
+path.s3tc="res://.godot/imported/Leaves.png-2ff4687bf0079a751fe97b4efe004b48.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/Stylized Nature MegaKit[Standard]/textures/Leaves.png"
-dest_files=["res://.godot/imported/Leaves.png-253191edb5e685e7b5be35324953d619.s3tc.ctex"]
+source_file="res://asset/Stylized Nature MegaKit[Standard]/Textures/Leaves.png"
+dest_files=["res://.godot/imported/Leaves.png-2ff4687bf0079a751fe97b4efe004b48.s3tc.ctex"]
 
 [params]
 

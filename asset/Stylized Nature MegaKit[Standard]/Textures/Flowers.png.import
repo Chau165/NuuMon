@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dsmkmt6j83u5n"
-path.s3tc="res://.godot/imported/Flowers.png-a3dd1020759fb3023e0cce07b681e9bb.s3tc.ctex"
+path.s3tc="res://.godot/imported/Flowers.png-a968247781803e14e219af88ac2c0867.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://asset/Stylized Nature MegaKit[Standard]/textures/Flowers.png"
-dest_files=["res://.godot/imported/Flowers.png-a3dd1020759fb3023e0cce07b681e9bb.s3tc.ctex"]
+source_file="res://asset/Stylized Nature MegaKit[Standard]/Textures/Flowers.png"
+dest_files=["res://.godot/imported/Flowers.png-a968247781803e14e219af88ac2c0867.s3tc.ctex"]
 
 [params]
 

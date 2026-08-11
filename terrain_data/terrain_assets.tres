@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_normal_roughness.png" id="18_0uib4"]
 [ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_rock_albedo_height.png" id="19_nm85o"]
 [ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_rock_normal_roughness.png" id="20_if6f6"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/subtle_grass_albedo_height.png" id="21_subtle_grass"]
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_m3yjv"]
 name = "Sand Dry"
@@ -45,24 +46,24 @@ uv_scale = 0.03
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_aqcab"]
 name = "Meadow Grass"
 id = 2
-albedo_color = Color(0.93, 1.06, 0.91, 1)
-albedo_texture = ExtResource("5_wlg18")
-normal_texture = ExtResource("6_4dd1b")
-normal_depth = 0.32
-ao_strength = 0.28
-roughness = 0.08
-uv_scale = 0.115
+albedo_color = Color(1, 1.02, 0.95, 1)
+albedo_texture = ExtResource("21_subtle_grass")
+normal_texture = ExtResource("10_772tg")
+normal_depth = 0.035
+ao_strength = 0.12
+roughness = 0.12
+uv_scale = 0.42
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_go0c0"]
 name = "Forest Grass Ground"
 id = 3
-albedo_color = Color(0.88, 0.98, 0.84, 1)
-albedo_texture = ExtResource("7_bremx")
-normal_texture = ExtResource("8_du5pk")
-normal_depth = 0.3
-ao_strength = 0.28
-roughness = 0.1
-uv_scale = 0.095
+albedo_color = Color(0.84, 0.9, 0.78, 1)
+albedo_texture = ExtResource("21_subtle_grass")
+normal_texture = ExtResource("10_772tg")
+normal_depth = 0.045
+ao_strength = 0.16
+roughness = 0.14
+uv_scale = 0.38
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_p7ech"]
 name = "Forest Mud"
