@@ -1,0 +1,6 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Temporary files created while the Terrain3D native plugin is in use.
+~*.TMP

@@ -1,0 +1,134 @@
+[gd_resource type="Terrain3DAssets" format=3]
+
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/sand_dry_albedo_height.png" id="1_eqd7x"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/sand_dry_normal_roughness.png" id="2_n46bk"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/beach_wet_albedo_height.png" id="3_4freu"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/beach_wet_normal_roughness.png" id="4_31qac"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/meadow_grass_albedo_height.png" id="5_wlg18"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/meadow_grass_normal_roughness.png" id="6_4dd1b"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/forest_grass_ground_albedo_height.png" id="7_bremx"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/forest_grass_ground_normal_roughness.png" id="8_du5pk"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/forest_mud_albedo_height.png" id="9_3f148"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/forest_mud_normal_roughness.png" id="10_772tg"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/foothill_rock_albedo_height.png" id="11_4kefr"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/foothill_rock_normal_roughness.png" id="12_hxe15"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/mountain_rock_albedo_height.png" id="13_1eno4"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/mountain_rock_normal_roughness.png" id="14_4ocpk"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snowy_grass_albedo_height.png" id="15_4v0i1"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snowy_grass_normal_roughness.png" id="16_m7cfw"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_albedo_height.png" id="17_50akh"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_normal_roughness.png" id="18_0uib4"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_rock_albedo_height.png" id="19_nm85o"]
+[ext_resource type="Texture2D" path="res://terrain_data/biome_textures/snow_rock_normal_roughness.png" id="20_if6f6"]
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_m3yjv"]
+name = "Sand Dry"
+albedo_color = Color(1.04, 1, 0.93, 1)
+albedo_texture = ExtResource("1_eqd7x")
+normal_texture = ExtResource("2_n46bk")
+normal_depth = 0.28
+ao_strength = 0.28
+roughness = 0.1
+uv_scale = 0.06
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_l2v2q"]
+name = "Beach Wet"
+id = 1
+albedo_color = Color(0.92, 1.02, 1.05, 1)
+albedo_texture = ExtResource("3_4freu")
+normal_texture = ExtResource("4_31qac")
+normal_depth = 0.22
+ao_strength = 0.28
+roughness = -0.2
+uv_scale = 0.03
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_aqcab"]
+name = "Meadow Grass"
+id = 2
+albedo_color = Color(0.93, 1.06, 0.91, 1)
+albedo_texture = ExtResource("5_wlg18")
+normal_texture = ExtResource("6_4dd1b")
+normal_depth = 0.32
+ao_strength = 0.28
+roughness = 0.08
+uv_scale = 0.115
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_go0c0"]
+name = "Forest Grass Ground"
+id = 3
+albedo_color = Color(0.88, 0.98, 0.84, 1)
+albedo_texture = ExtResource("7_bremx")
+normal_texture = ExtResource("8_du5pk")
+normal_depth = 0.3
+ao_strength = 0.28
+roughness = 0.1
+uv_scale = 0.095
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_p7ech"]
+name = "Forest Mud"
+id = 4
+albedo_color = Color(0.96, 0.91, 0.82, 1)
+albedo_texture = ExtResource("9_3f148")
+normal_texture = ExtResource("10_772tg")
+normal_depth = 0.34
+ao_strength = 0.28
+roughness = 0.14
+uv_scale = 0.08
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_o7syr"]
+name = "Foothill Rock"
+id = 5
+albedo_color = Color(0.92, 0.96, 0.86, 1)
+albedo_texture = ExtResource("11_4kefr")
+normal_texture = ExtResource("12_hxe15")
+normal_depth = 0.42
+ao_strength = 0.28
+roughness = 0.16
+uv_scale = 0.06
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_kqlgj"]
+name = "Mountain Rock"
+id = 6
+albedo_color = Color(0.88, 0.96, 1.03, 1)
+albedo_texture = ExtResource("13_1eno4")
+normal_texture = ExtResource("14_4ocpk")
+normal_depth = 0.45
+ao_strength = 0.28
+roughness = 0.16
+uv_scale = 0.052
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_p5wiu"]
+name = "Snowy Grass"
+id = 7
+albedo_color = Color(0.94, 1.02, 1.03, 1)
+albedo_texture = ExtResource("15_4v0i1")
+normal_texture = ExtResource("16_m7cfw")
+normal_depth = 0.3
+ao_strength = 0.28
+roughness = 0.04
+uv_scale = 0.09
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_b1l8c"]
+name = "Snow"
+id = 8
+albedo_color = Color(1.02, 1.04, 1.08, 1)
+albedo_texture = ExtResource("17_50akh")
+normal_texture = ExtResource("18_0uib4")
+normal_depth = 0.25
+ao_strength = 0.28
+roughness = -0.04
+uv_scale = 0.06
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_icxd1"]
+name = "Snow Rock"
+id = 9
+albedo_color = Color(0.92, 0.98, 1.06, 1)
+albedo_texture = ExtResource("19_nm85o")
+normal_texture = ExtResource("20_if6f6")
+normal_depth = 0.42
+ao_strength = 0.28
+roughness = 0.1
+uv_scale = 0.052
+
+[resource]
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_m3yjv"), SubResource("Terrain3DTextureAsset_l2v2q"), SubResource("Terrain3DTextureAsset_aqcab"), SubResource("Terrain3DTextureAsset_go0c0"), SubResource("Terrain3DTextureAsset_p7ech"), SubResource("Terrain3DTextureAsset_o7syr"), SubResource("Terrain3DTextureAsset_kqlgj"), SubResource("Terrain3DTextureAsset_p5wiu"), SubResource("Terrain3DTextureAsset_b1l8c"), SubResource("Terrain3DTextureAsset_icxd1")])

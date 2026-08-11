@@ -1,0 +1,102 @@
+[
+	{
+		"id": 0,
+		"name": "Sand Dry",
+		"packed_albedo_height": "res://terrain_data/biome_textures/sand_dry_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/sand_dry_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Sand/Sand/1/1_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Sand/Sand/1/1_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Sand/Sand/1/1_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Sand/Sand/1/1_smoothness.bmp"
+	},
+	{
+		"id": 1,
+		"name": "Beach Wet",
+		"packed_albedo_height": "res://terrain_data/biome_textures/beach_wet_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/beach_wet_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Beach/Beach/7/7_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Beach/Beach/7/7_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Beach/Beach/7/7_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Beach/Beach/7/7_smoothness.bmp"
+	},
+	{
+		"id": 2,
+		"name": "Meadow Grass",
+		"packed_albedo_height": "res://terrain_data/biome_textures/meadow_grass_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/meadow_grass_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Grass/Grass/4/4_diffuseOriginal.png",
+		"source_height": "res://asset/terrain_textures/Grass/Grass/4/4_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Grass/Grass/4/4_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Grass/Grass/4/4_smoothness.bmp"
+	},
+	{
+		"id": 3,
+		"name": "Forest Grass Ground",
+		"packed_albedo_height": "res://terrain_data/biome_textures/forest_grass_ground_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/forest_grass_ground_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Grass/Grass/10/10_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Grass/Grass/10/10_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Grass/Grass/10/10_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Grass/Grass/10/10_smoothness.bmp"
+	},
+	{
+		"id": 4,
+		"name": "Forest Mud",
+		"packed_albedo_height": "res://terrain_data/biome_textures/forest_mud_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/forest_mud_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Mud/Mud/5/5_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Mud/Mud/5/5_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Mud/Mud/5/5_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Mud/Mud/5/5_smoothness.bmp"
+	},
+	{
+		"id": 5,
+		"name": "Foothill Rock",
+		"packed_albedo_height": "res://terrain_data/biome_textures/foothill_rock_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/foothill_rock_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Ground/Ground/2/2_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Ground/Ground/2/2_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Ground/Ground/2/2_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Ground/Ground/2/2_smoothness.bmp"
+	},
+	{
+		"id": 6,
+		"name": "Mountain Rock",
+		"packed_albedo_height": "res://terrain_data/biome_textures/mountain_rock_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/mountain_rock_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Ground/Ground/9/9_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Ground/Ground/9/9_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Ground/Ground/9/9_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Ground/Ground/9/9_smoothness.bmp"
+	},
+	{
+		"id": 7,
+		"name": "Snowy Grass",
+		"packed_albedo_height": "res://terrain_data/biome_textures/snowy_grass_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/snowy_grass_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Snowy Grass/Snowy Grass/3/3_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Snowy Grass/Snowy Grass/3/3_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Snowy Grass/Snowy Grass/3/3_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Snowy Grass/Snowy Grass/3/3_smoothness.bmp"
+	},
+	{
+		"id": 8,
+		"name": "Snow",
+		"packed_albedo_height": "res://terrain_data/biome_textures/snow_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/snow_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Snow/Snow/10/10_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Snow/Snow/10/10_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Snow/Snow/10/10_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Snow/Snow/10/10_smoothness.bmp"
+	},
+	{
+		"id": 9,
+		"name": "Snow Rock",
+		"packed_albedo_height": "res://terrain_data/biome_textures/snow_rock_albedo_height.png",
+		"packed_normal_roughness": "res://terrain_data/biome_textures/snow_rock_normal_roughness.png",
+		"source_albedo": "res://asset/terrain_textures/Snow Ground/Snow Ground/9/9_diffuseOriginal.bmp",
+		"source_height": "res://asset/terrain_textures/Snow Ground/Snow Ground/9/9_height.bmp",
+		"source_normal": "res://asset/terrain_textures/Snow Ground/Snow Ground/9/9_normal.bmp",
+		"source_smoothness": "res://asset/terrain_textures/Snow Ground/Snow Ground/9/9_smoothness.bmp"
+	}
+]

@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="Terrain3DMaterial" path="res://terrain_data/terrain_material.tres" id="1_terrain_material"]
+[ext_resource type="Terrain3DAssets" path="res://terrain_data/terrain_assets.tres" id="2_terrain_assets"]
+[ext_resource type="PackedScene" path="res://scenes/world/auto_environment.tscn" id="3_auto_environment"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfm0u"]
+cull_mode = 2
+albedo_color = Color(0.025, 0.32, 0.5, 1)
+metallic = 0.05
+roughness = 0.35
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5kkm6"]
+material = SubResource("StandardMaterial3D_qfm0u")
+size = Vector2(4096, 4096)
+subdivide_width = 1
+subdivide_depth = 1
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3s5lk"]
+sky_top_color = Color(0.28235295, 0.65882355, 0.9098039, 1)
+sky_horizon_color = Color(0.65882355, 0.8627451, 0.9607843, 1)
+ground_bottom_color = Color(0.36862746, 0.5686275, 0.6313726, 1)
+ground_horizon_color = Color(0.70980394, 0.8745098, 0.8745098, 1)
+sun_angle_max = 18.0
+
+[sub_resource type="Sky" id="Sky_omcp8"]
+sky_material = SubResource("ProceduralSkyMaterial_3s5lk")
+
+[sub_resource type="Environment" id="Environment_5dykv"]
+background_mode = 2
+background_energy_multiplier = 0.9
+sky = SubResource("Sky_omcp8")
+ambient_light_source = 3
+ambient_light_energy = 0.55
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.7254902, 0.8627451, 0.9098039, 1)
+fog_density = 0.00045
+fog_sky_affect = 0.35
+
+[node name="World_Island" type="Node3D" unique_id=356045794]
+
+[node name="Terrain3D" type="Terrain3D" parent="." unique_id=493178958]
+data_directory = "res://terrain_data"
+material = ExtResource("1_terrain_material")
+assets = ExtResource("2_terrain_assets")
+show_contours = false
+show_heightmap = false
+
+[node name="AutoEnvironment" parent="." instance=ExtResource("3_auto_environment")]
+
+[node name="Ocean" type="Node3D" parent="." unique_id=8422098]
+
+[node name="OceanMesh" type="MeshInstance3D" parent="Ocean" unique_id=236847608]
+mesh = SubResource("PlaneMesh_5kkm6")
+
+[node name="Environment" type="Node3D" parent="." unique_id=407220047]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment" unique_id=1425205728]
+environment = SubResource("Environment_5dykv")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment" unique_id=2134653679]
+transform = Transform3D(0.88294756, 0.36994863, -0.2890356, 0, 0.6156615, 0.7880107, 0.46947157, -0.6957722, 0.5435968, 0, 0, 0)
+light_color = Color(1, 0.9490196, 0.8156863, 1)
+light_energy = 1.25
+shadow_enabled = true
+directional_shadow_max_distance = 1600.0
+
+[node name="GameplayProps" type="Node3D" parent="." unique_id=1698741021]
+
+[node name="InteractiveTrees" type="Node3D" parent="GameplayProps" unique_id=69166751]
+
+[node name="InteractiveRocks" type="Node3D" parent="GameplayProps" unique_id=920445980]
+
+[node name="Landmarks" type="Node3D" parent="GameplayProps" unique_id=2094788376]
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1930927027]
+
+[node name="PlayerSpawn" type="Marker3D" parent="SpawnPoints" unique_id=1065485749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.31, 750)
+
+[node name="Navigation" type="Node3D" parent="." unique_id=1106108979]
+
+[node name="Debug" type="Node3D" parent="." unique_id=1351377899]
+
+[node name="PreviewCamera" type="Camera3D" parent="Debug" unique_id=82778120]
+transform = Transform3D(0.9856223, -0.16539401, 0.034548435, 0, 0.20447241, 0.97887236, -0.16896382, -0.9647984, 0.20153254, 0, 1700, 250)
+current = true
+fov = 70.0
+far = 5000.0

@@ -1,0 +1,114 @@
+{
+	"generated_scene": "res://scenes/world/auto_environment.tscn",
+	"generation_ms": 6351,
+	"instances_by_asset": {
+		"BirchTree_1": 102,
+		"Bush_1_A_Color1": 79,
+		"Bush_Common": 303,
+		"Bush_Small": 71,
+		"CommonTree_1": 296,
+		"CommonTree_2": 324,
+		"Flower_1_Clump": 54,
+		"Flower_3_Group": 119,
+		"Flower_4_Group": 104,
+		"Grass_1_A_Color1": 708,
+		"Grass_Common_Short": 2181,
+		"Grass_Common_Tall": 2152,
+		"MapleTree_1": 114,
+		"Pine_1": 62,
+		"Pine_2": 41,
+		"Pine_3": 45,
+		"Pine_4": 41,
+		"Pine_5": 48,
+		"Rock_2_A_Color1": 126,
+		"Rock_Medium_1": 216,
+		"Rock_Medium_2": 252,
+		"Rock_Medium_3": 216,
+		"Tree_1_A_Color1": 105
+	},
+	"instances_by_biome": {
+		"Alpine": 411,
+		"Beach": 55,
+		"Forest": 3225,
+		"Meadow": 3572,
+		"Mountain": 322,
+		"Snow": 174
+	},
+	"instances_by_category": {
+		"bush": 453,
+		"flower": 277,
+		"grass": 5041,
+		"pine": 237,
+		"rock": 810,
+		"tree": 941
+	},
+	"multimesh_nodes": 334,
+	"optimization": {
+		"bush_visibility_m": 750.0,
+		"distance_fade": true,
+		"flower_visibility_m": 500.0,
+		"grass_visibility_m": 420.0,
+		"rock_visibility_m": 1300.0,
+		"shadows_disabled_for": [
+			"grass",
+			"flower",
+			"bush",
+			"small_rock"
+		],
+		"tree_visibility_m": 1500.0
+	},
+	"placement": {
+		"chunk_size_m": 512.0,
+		"forest_clearings": [
+			"(-260.0, 230.0)",
+			"(245.0, 100.0)",
+			"(-340.0, -120.0)",
+			"(135.0, -315.0)"
+		],
+		"main_corridor_half_width_m": 48.0,
+		"runtime_generation": false,
+		"scale_variation": [
+			0.85,
+			1.15
+		],
+		"spawn_clear_radius_m": 68.0
+	},
+	"rejected_candidates": {
+		"clearing": 40,
+		"corridor": 200,
+		"forest_cluster_gap": 582,
+		"height": 263,
+		"slope": 80,
+		"spawn": 1
+	},
+	"source_meshes": {
+		"BirchTree_1": "res://asset/Ultimate Stylized Nature - May 2022/glTF/BirchTree_1.gltf",
+		"Bush_1_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Bush_1_A_Color1.gltf",
+		"Bush_Common": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Bush_Common.gltf",
+		"Bush_Small": "res://asset/Ultimate Stylized Nature - May 2022/glTF/Bush_Small.gltf",
+		"CommonTree_1": "res://asset/Stylized Nature MegaKit[Standard]/glTF/CommonTree_1.gltf",
+		"CommonTree_2": "res://asset/Stylized Nature MegaKit[Standard]/glTF/CommonTree_2.gltf",
+		"Flower_1_Clump": "res://asset/Ultimate Stylized Nature - May 2022/glTF/Flower_1_Clump.gltf",
+		"Flower_3_Group": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Flower_3_Group.gltf",
+		"Flower_4_Group": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Flower_4_Group.gltf",
+		"Grass_1_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Grass_1_A_Color1.gltf",
+		"Grass_Common_Short": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Grass_Common_Short.gltf",
+		"Grass_Common_Tall": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Grass_Common_Tall.gltf",
+		"MapleTree_1": "res://asset/Ultimate Stylized Nature - May 2022/glTF/MapleTree_1.gltf",
+		"Pine_1": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Pine_1.gltf",
+		"Pine_2": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Pine_2.gltf",
+		"Pine_3": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Pine_3.gltf",
+		"Pine_4": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Pine_4.gltf",
+		"Pine_5": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Pine_5.gltf",
+		"Rock_2_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Rock_2_A_Color1.gltf",
+		"Rock_Medium_1": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_1.gltf",
+		"Rock_Medium_2": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_2.gltf",
+		"Rock_Medium_3": "res://asset/Stylized Nature MegaKit[Standard]/glTF/Rock_Medium_3.gltf",
+		"Tree_1_A_Color1": "res://asset/KayKit_Forest_Nature_Pack_1.0_FREE/KayKit_Forest_Nature_Pack_1.0_FREE/Assets/gltf/Tree_1_A_Color1.gltf"
+	},
+	"strategy": "Saved biome and 512m chunk grouped MultiMesh decoration",
+	"total_instances": 7759,
+	"unavailable_categories": {
+		"logs_stumps": "No matching .gltf assets found in the installed packs"
+	}
+}
