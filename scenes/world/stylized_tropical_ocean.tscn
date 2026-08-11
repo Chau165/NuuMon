@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://addons/boujie_water_shader/types/ocean.gd" id="1_ocean"]
+[ext_resource type="Material" path="res://scenes/world/stylized_tropical_ocean.tres" id="2_material"]
+[ext_resource type="Script" path="res://addons/boujie_water_shader/types/camera_follower_3d.gd" id="3_follower"]
+[ext_resource type="Script" path="res://addons/boujie_water_shader/types/water_material_designer.gd" id="4_designer"]
+[ext_resource type="Script" path="res://addons/boujie_water_shader/types/gerstner_wave.gd" id="5_wave"]
+
+[sub_resource type="Resource" id="Wave_swell"]
+script = ExtResource("5_wave")
+steepness = 0.42
+amplitude = 0.38
+direction_degrees = 28.0
+frequency = 0.012
+speed = 0.42
+
+[sub_resource type="Resource" id="Wave_medium"]
+script = ExtResource("5_wave")
+steepness = 0.18
+amplitude = 0.3
+direction_degrees = 122.0
+frequency = 0.045
+speed = 0.78
+phase_degrees = 70.0
+
+[sub_resource type="Resource" id="Wave_detail"]
+script = ExtResource("5_wave")
+steepness = 0.055
+amplitude = 0.28
+direction_degrees = 238.0
+frequency = 0.17
+speed = 1.7
+phase_degrees = 170.0
+
+[sub_resource type="Resource" id="Foam_swell"]
+script = ExtResource("5_wave")
+steepness = 0.4
+amplitude = 0.35
+direction_degrees = 28.0
+frequency = 0.018
+speed = 0.7
+phase_degrees = -35.0
+
+[sub_resource type="Resource" id="Foam_medium"]
+script = ExtResource("5_wave")
+steepness = 0.12
+amplitude = 0.1
+direction_degrees = 118.0
+frequency = 0.05
+speed = 0.95
+phase_degrees = 40.0
+
+[sub_resource type="Resource" id="Uv_a"]
+script = ExtResource("5_wave")
+steepness = 0.075
+amplitude = 0.58
+direction_degrees = 315.0
+frequency = 0.7
+speed = 0.5
+
+[sub_resource type="Resource" id="Uv_b"]
+script = ExtResource("5_wave")
+steepness = 0.045
+amplitude = 0.42
+direction_degrees = 90.0
+frequency = 0.42
+speed = 0.34
+phase_degrees = 90.0
+
+[node name="StylizedTropicalOcean" type="Node3D"]
+script = ExtResource("1_ocean")
+material = ExtResource("2_material")
+outermost_resolution = 10
+levels_of_detail = 5
+unit_size = 2.0
+far_edge = 5000
+
+[node name="CameraFollower3D" type="Node3D" parent="."]
+script = ExtResource("3_follower")
+target_path = NodePath("..")
+snap = true
+snap_unit = 32.0
+
+[node name="WaterMaterialDesigner" type="Node" parent="."]
+script = ExtResource("4_designer")
+material = ExtResource("2_material")
+update_on_ready = true
+update_when_camera_far_changes = true
+ocean_path = NodePath("..")
+camera_follower_path = NodePath("../CameraFollower3D")
+distance_fade_far = 5000
+distance_fade_softness = 0.28
+wave_fade_far = 1440
+wave_fade_softness = 0.38
+height_waves = Array[ExtResource("5_wave")]([SubResource("Wave_swell"), SubResource("Wave_medium"), SubResource("Wave_detail")])
+foam_waves = Array[ExtResource("5_wave")]([SubResource("Foam_swell"), SubResource("Foam_medium")])
+uv_waves = Array[ExtResource("5_wave")]([SubResource("Uv_a"), SubResource("Uv_b")])

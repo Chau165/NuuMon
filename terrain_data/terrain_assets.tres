@@ -35,13 +35,13 @@ uv_scale = 0.06
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_l2v2q"]
 name = "Beach Wet"
 id = 1
-albedo_color = Color(0.92, 1.02, 1.05, 1)
+albedo_color = Color(0.86, 0.94, 0.96, 1)
 albedo_texture = ExtResource("3_4freu")
 normal_texture = ExtResource("4_31qac")
-normal_depth = 0.22
+normal_depth = 0.15
 ao_strength = 0.28
-roughness = -0.2
-uv_scale = 0.03
+roughness = -0.05
+uv_scale = 0.045
 
 [sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_aqcab"]
 name = "Meadow Grass"

@@ -1,0 +1,96 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3]
+
+[ext_resource type="Shader" path="res://scenes/world/stylized_tropical_ocean.gdshader" id="1_shader"]
+[ext_resource type="Texture2D" path="res://addons/boujie_water_shader/shader/ocean_albedo_white_highcontrast.png" id="2_albedo"]
+[ext_resource type="Texture2D" path="res://addons/boujie_water_shader/shader/refraction.png" id="3_refraction"]
+[ext_resource type="Texture2D" path="res://addons/boujie_water_shader/shader/foam_2.png" id="4_foam"]
+
+[resource]
+resource_name = "StylizedTropicalOcean"
+shader = ExtResource("1_shader")
+shader_parameter/freeze_time = false
+shader_parameter/albedo = Color(0.015, 0.62, 0.7, 0.44)
+shader_parameter/albedo_fresnel = Color(0.09, 0.46, 0.72, 1)
+shader_parameter/specular = 0.23
+shader_parameter/roughness = 0.38
+shader_parameter/metallic = 0.0
+shader_parameter/fresnel_power = 4.2
+shader_parameter/fresnel_strength = 0.32
+shader_parameter/vertex_displace_from_mesh_normal = false
+shader_parameter/normal_wave_from_mesh_normal = false
+shader_parameter/texture_albedo = ExtResource("2_albedo")
+shader_parameter/refraction = 0.018
+shader_parameter/refraction_texture_channel = Vector4(1, 0, 0, 0)
+shader_parameter/refraction_opacity = 0.58
+shader_parameter/texture_refraction = ExtResource("3_refraction")
+shader_parameter/shore_start_blend = 0.45
+shader_parameter/shore_end_blend = 4.5
+shader_parameter/shore_foam_color = Color(0.88, 0.97, 1, 1)
+shader_parameter/shore_inner_width = 0.65
+shader_parameter/shore_outer_strength = 0.86
+shader_parameter/shore_noise_scale = 0.035
+shader_parameter/shore_detail_scale = 0.11
+shader_parameter/shore_distortion = 1.25
+shader_parameter/shore_wash_speed = 0.7
+shader_parameter/texture_foam = ExtResource("4_foam")
+shader_parameter/distance_fade_min = 3600.0
+shader_parameter/distance_fade_max = 5000.0
+shader_parameter/near_fade_min = 1.0
+shader_parameter/near_fade_max = 1.25
+shader_parameter/foam_fade_min = 900.0
+shader_parameter/foam_fade_max = 1440.0
+shader_parameter/shore_fade_min = 900.0
+shader_parameter/shore_fade_max = 1440.0
+shader_parameter/vertex_wave_fade_min = 900.0
+shader_parameter/vertex_wave_fade_max = 1440.0
+shader_parameter/depth_fog_fade_min = 900.0
+shader_parameter/depth_fog_fade_max = 1440.0
+shader_parameter/refraction_scaling_distance_min = 45.0
+shader_parameter/uv_blend_sharpness = 2.0
+shader_parameter/uv_tri_scale = Vector3(42, 42, 42)
+shader_parameter/uv_tri_offset = Vector3(0, 0, 0)
+shader_parameter/large_scale_variation = 0.055
+shader_parameter/large_scale_uv = 180.0
+shader_parameter/large_scale_speed = Vector2(0.003, -0.002)
+shader_parameter/far_variation_start = 140.0
+shader_parameter/far_variation_end = 1200.0
+shader_parameter/normal_wave_fade_min = 2000.0
+shader_parameter/normal_wave_fade_max = 4500.0
+shader_parameter/ripple_scale = 10.0
+shader_parameter/ripple_speed = Vector2(-0.025, 0.018)
+shader_parameter/ripple_strength_near = 0.1
+shader_parameter/ripple_strength_far = 0.045
+shader_parameter/color_deep = Color(0.012, 0.095, 0.32, 0.97)
+shader_parameter/color_shallow = Color(0.015, 0.79, 0.73, 0.38)
+shader_parameter/color_medium = Color(0.015, 0.43, 0.63, 0.74)
+shader_parameter/beers_law = 0.15
+shader_parameter/depth_offset = -0.6
+shader_parameter/shallow_depth_end = 6.0
+shader_parameter/deep_depth_start = 18.0
+shader_parameter/deep_depth_end = 45.0
+shader_parameter/shallow_surface_tint = 0.18
+shader_parameter/deep_surface_tint = 0.52
+shader_parameter/albedo_snell = Color(0.015, 0.16, 0.34, 1)
+shader_parameter/snell_direction = Vector3(0, 1, 0)
+shader_parameter/snell_tightness = 0.68
+shader_parameter/WaveCount = 3
+shader_parameter/WaveSteepnesses = PackedFloat32Array(0.42, 0.18, 0.055)
+shader_parameter/WaveAmplitudes = PackedFloat32Array(0.38, 0.3, 0.28)
+shader_parameter/WaveDirectionsDegrees = PackedFloat32Array(28, 122, 238)
+shader_parameter/WaveFrequencies = PackedFloat32Array(0.012, 0.045, 0.17)
+shader_parameter/WaveSpeeds = PackedFloat32Array(0.42, 0.78, 1.7)
+shader_parameter/WavePhases = PackedFloat32Array(0, 70, 170)
+shader_parameter/FoamWaveCount = 2
+shader_parameter/FoamWaveSteepnesses = PackedFloat32Array(0.4, 0.12)
+shader_parameter/FoamWaveAmplitudes = PackedFloat32Array(0.35, 0.1)
+shader_parameter/FoamWaveDirectionsDegrees = PackedFloat32Array(28, 118)
+shader_parameter/FoamWaveFrequencies = PackedFloat32Array(0.018, 0.05)
+shader_parameter/FoamWaveSpeeds = PackedFloat32Array(0.7, 0.95)
+shader_parameter/FoamWavePhases = PackedFloat32Array(-35, 40)
+shader_parameter/UVWaveCount = 2
+shader_parameter/UVWaveSteepnesses = PackedFloat32Array(0.075, 0.045)
+shader_parameter/UVWaveAmplitudes = PackedFloat32Array(0.58, 0.42)
+shader_parameter/UVWaveDirectionsDegrees = PackedFloat32Array(315, 90)
+shader_parameter/UVWaveFrequencies = PackedFloat32Array(0.7, 0.42)
+shader_parameter/UVWaveSpeeds = PackedFloat32Array(0.5, 0.34)
+shader_parameter/UVWavePhases = PackedFloat32Array(0, 90)

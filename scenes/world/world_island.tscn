@@ -8,18 +8,7 @@
 [ext_resource type="Script" path="res://tests/forest_visual_qa.gd" id="6_forest_visual_qa"]
 [ext_resource type="Script" path="res://scenes/world/biome_eligibility.gd" id="7_biome_eligibility"]
 [ext_resource type="Script" path="res://tests/tree_asset_probe.gd" id="8_tree_asset_probe"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qfm0u"]
-cull_mode = 2
-albedo_color = Color(0.025, 0.32, 0.5, 1)
-metallic = 0.05
-roughness = 0.35
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_5kkm6"]
-material = SubResource("StandardMaterial3D_qfm0u")
-size = Vector2(4096, 4096)
-subdivide_width = 1
-subdivide_depth = 1
+[ext_resource type="PackedScene" path="res://scenes/world/stylized_tropical_ocean.tscn" id="9_tropical_ocean"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3s5lk"]
 sky_top_color = Color(0.28235295, 0.65882355, 0.9098039, 1)
@@ -66,10 +55,7 @@ script = ExtResource("6_forest_visual_qa")
 [node name="TreeAssetProbe" type="Node" parent="."]
 script = ExtResource("8_tree_asset_probe")
 
-[node name="Ocean" type="Node3D" parent="." unique_id=8422098]
-
-[node name="OceanMesh" type="MeshInstance3D" parent="Ocean" unique_id=236847608]
-mesh = SubResource("PlaneMesh_5kkm6")
+[node name="Ocean" parent="." instance=ExtResource("9_tropical_ocean")]
 
 [node name="Environment" type="Node3D" parent="." unique_id=407220047]
 

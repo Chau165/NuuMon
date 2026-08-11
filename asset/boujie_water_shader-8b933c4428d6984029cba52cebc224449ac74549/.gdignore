@@ -1,0 +1,2 @@
+# This folder is the archived addon source. The active copy lives in res://addons.
+# Ignoring it prevents Godot from registering its class_name scripts a second time.
