@@ -2,13 +2,14 @@ extends Node
 
 const BIOME_ELIGIBILITY := preload("res://scenes/world/biome_eligibility.gd")
 const CAPTURE_ENABLED := false
-const CAPTURE_TAG := "ultimate_nature_pass1"
+const CAPTURE_TAG := "wind_pass1"
 const PRINT_BIOME_PROFILE := false
 const DEBUG_BIOME_MASK_ENABLED := false
 const VIEWS := [
 	{"name": "spawn", "xz": Vector2(0.0, 750.0), "yaw": 0.0, "pitch": -14.0},
 	{"name": "beach_side", "xz": Vector2(0.0, 750.0), "yaw": 90.0, "pitch": -12.0},
 	{"name": "forest_edge", "xz": Vector2(4.6, 635.0), "yaw": 0.0, "pitch": -10.0},
+	{"name": "forest_edge_wind_later", "xz": Vector2(4.6, 635.0), "yaw": 0.0, "pitch": -10.0},
 	{"name": "deep_forest", "xz": Vector2(-1.0, 585.0), "yaw": 0.0, "pitch": -8.0},
 	{"name": "deep_canopy", "xz": Vector2(-1.0, 585.0), "yaw": 0.0, "pitch": 18.0},
 	{"name": "deep_interior", "xz": Vector2(34.0, 585.0), "yaw": -18.0, "pitch": -6.0},

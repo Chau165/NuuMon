@@ -3,6 +3,7 @@ extends Node3D
 enum TreeTier { LARGE, MEDIUM, SAPLING }
 
 const PRINT_ASSET_AABB := false
+const FOLIAGE_WIND_SHADER: Shader = preload("res://scenes/world/stylized_foliage_wind.gdshader")
 
 const TREE_SCENES: Array[PackedScene] = [
 	preload("res://asset/Ultimate Stylized Nature - May 2022/glTF/MapleTree_1.gltf"),
@@ -113,6 +114,13 @@ const REPLACED_PROP_NAMES := [
 @export_range(0.0, 1.0, 0.01) var understory_density := 0.82
 @export_range(0.0, 60.0, 0.5) var maximum_slope_degrees := 38.0
 
+@export_group("Wind")
+@export var foliage_wind_enabled := true
+@export_range(0.0, 0.15, 0.001) var tree_wind_strength := 0.032
+@export_range(0.0, 0.15, 0.001) var understory_wind_strength := 0.048
+@export_range(0.0, 3.0, 0.01) var foliage_wind_speed := 0.82
+@export var foliage_wind_direction := Vector2(0.85, 0.35)
+
 var _terrain: Terrain3D
 var _biome: Node
 var _tree_meshes: Array[Mesh] = []
@@ -125,6 +133,8 @@ var _dead_tree_meshes: Array[Mesh] = []
 var _dead_tree_sizes: Array[Vector2] = []
 var _tree_stats: Array[Dictionary] = []
 var _understory_stats: Array[Dictionary] = []
+var _wind_mesh_count := 0
+var _wind_surface_count := 0
 
 
 func _ready() -> void:
@@ -141,8 +151,20 @@ func _initialize() -> void:
 		push_warning("IslandForestCover could not find Terrain3D data or BiomeEligibility.")
 		return
 	_biome.configure(_terrain)
+	_wind_mesh_count = 0
+	_wind_surface_count = 0
 	_prepare_tree_assets()
 	_prepare_nature_assets()
+	print(
+		"FOREST_WIND enabled=%s foliage_meshes=%d foliage_surfaces=%d tree_strength=%.3f understory_strength=%.3f speed=%.2f" % [
+			foliage_wind_enabled,
+			_wind_mesh_count,
+			_wind_surface_count,
+			tree_wind_strength,
+			understory_wind_strength,
+			foliage_wind_speed,
+		]
+	)
 
 	var hidden_instances := _hide_replaced_environment_props(world)
 	var tree_counts := _generate_tree_clusters()
@@ -176,18 +198,19 @@ func _prepare_tree_assets() -> void:
 	_tree_meshes.clear()
 	_tree_sizes.clear()
 	for index in TREE_SCENES.size():
-		var mesh := _load_first_mesh(TREE_SCENES[index])
-		_tree_meshes.append(mesh)
-		if mesh == null:
+		var source_mesh := _load_first_mesh(TREE_SCENES[index])
+		if source_mesh == null:
+			_tree_meshes.append(null)
 			_tree_sizes.append(Vector2.ONE)
 			continue
-		var source_size := mesh.get_aabb().size
+		_tree_meshes.append(_create_wind_mesh(source_mesh, tree_wind_strength, false))
+		var source_size := source_mesh.get_aabb().size
 		var crown_width := maxf(source_size.x, source_size.z)
 		_tree_sizes.append(Vector2(crown_width, source_size.y))
 		if PRINT_ASSET_AABB:
 			print(
 				"TREE_SOURCE_AABB model=%s width=%.2f height=%.2f triangles=%d" % [
-					TREE_NAMES[index], crown_width, source_size.y, int(float(mesh.get_faces().size()) / 3.0),
+					TREE_NAMES[index], crown_width, source_size.y, int(float(source_mesh.get_faces().size()) / 3.0),
 				]
 			)
 
@@ -207,20 +230,80 @@ func _prepare_mesh_group(
 	meshes.clear()
 	sizes.clear()
 	for index in scenes.size():
-		var mesh := _load_first_mesh(scenes[index])
-		meshes.append(mesh)
-		if mesh == null:
+		var source_mesh := _load_first_mesh(scenes[index])
+		if source_mesh == null:
+			meshes.append(null)
 			sizes.append(Vector2.ONE)
 			continue
-		var source_size := mesh.get_aabb().size
+		var use_wind := group_name == "UNDERSTORY" and index not in MUSHROOM_MODEL_INDICES
+		var render_mesh := _create_wind_mesh(source_mesh, understory_wind_strength, true) if use_wind else source_mesh
+		meshes.append(render_mesh)
+		var source_size := source_mesh.get_aabb().size
 		var width := maxf(source_size.x, source_size.z)
 		sizes.append(Vector2(width, source_size.y))
 		if PRINT_ASSET_AABB:
 			print(
 				"NATURE_SOURCE_AABB group=%s index=%d width=%.2f height=%.2f triangles=%d" % [
-					group_name, index, width, source_size.y, int(float(mesh.get_faces().size()) / 3.0),
+					group_name, index, width, source_size.y, int(float(source_mesh.get_faces().size()) / 3.0),
 				]
 			)
+
+
+func _create_wind_mesh(source_mesh: Mesh, wind_strength: float, wind_all_surfaces: bool) -> Mesh:
+	if not foliage_wind_enabled:
+		return source_mesh
+	var wind_mesh := source_mesh.duplicate(true) as Mesh
+	if wind_mesh == null:
+		return source_mesh
+	var mesh_aabb := source_mesh.get_aabb()
+	var wind_surface_count := 0
+	for surface_index in wind_mesh.get_surface_count():
+		var source_material := wind_mesh.surface_get_material(surface_index)
+		if not source_material is StandardMaterial3D:
+			continue
+		var standard_material := source_material as StandardMaterial3D
+		if not wind_all_surfaces and not _is_foliage_material(standard_material):
+			continue
+		if standard_material.albedo_texture == null:
+			continue
+		wind_mesh.surface_set_material(
+			surface_index,
+			_create_foliage_wind_material(standard_material, mesh_aabb, wind_strength)
+		)
+		wind_surface_count += 1
+	if wind_surface_count > 0:
+		_wind_mesh_count += 1
+		_wind_surface_count += wind_surface_count
+	return wind_mesh
+
+
+func _is_foliage_material(material: StandardMaterial3D) -> bool:
+	var material_name := material.resource_name.to_lower()
+	var texture_path := material.albedo_texture.resource_path.to_lower() if material.albedo_texture != null else ""
+	return (
+		"leaf" in material_name
+		or "foliage" in material_name
+		or "leaf" in texture_path
+		or "foliage" in texture_path
+	)
+
+
+func _create_foliage_wind_material(
+	source_material: StandardMaterial3D,
+	mesh_aabb: AABB,
+	wind_strength: float
+) -> ShaderMaterial:
+	var material := ShaderMaterial.new()
+	material.shader = FOLIAGE_WIND_SHADER
+	material.set_shader_parameter("albedo_texture", source_material.albedo_texture)
+	material.set_shader_parameter("albedo_tint", source_material.albedo_color)
+	material.set_shader_parameter("alpha_cutoff", 0.10)
+	material.set_shader_parameter("wind_strength", wind_strength)
+	material.set_shader_parameter("wind_speed", foliage_wind_speed)
+	material.set_shader_parameter("wind_direction", foliage_wind_direction)
+	material.set_shader_parameter("mesh_bottom", mesh_aabb.position.y)
+	material.set_shader_parameter("mesh_height", maxf(mesh_aabb.size.y, 0.001))
+	return material
 
 
 func _generate_tree_clusters() -> Dictionary:
@@ -736,6 +819,7 @@ func _add_multimesh_chunk(
 
 	var generated_multimesh := MultiMesh.new()
 	generated_multimesh.transform_format = MultiMesh.TRANSFORM_3D
+	generated_multimesh.use_custom_data = true
 	generated_multimesh.mesh = mesh
 	generated_multimesh.instance_count = transforms.size()
 	var minimum_y := INF
@@ -743,6 +827,10 @@ func _add_multimesh_chunk(
 	for index in transforms.size():
 		var instance_transform: Transform3D = transforms[index]
 		generated_multimesh.set_instance_transform(index, instance_transform)
+		var world_origin := layer.position + instance_transform.origin
+		var phase_primary := absf(sin(world_origin.x * 12.9898 + world_origin.z * 78.233))
+		var phase_secondary := absf(sin(world_origin.x * 39.346 + world_origin.z * 11.135))
+		generated_multimesh.set_instance_custom_data(index, Color(phase_primary, phase_secondary, 0.0, 1.0))
 		minimum_y = minf(minimum_y, instance_transform.origin.y)
 		maximum_y = maxf(maximum_y, instance_transform.origin.y)
 	generated_multimesh.custom_aabb = AABB(

@@ -27,6 +27,13 @@ const TURF_MESH_HEIGHT := 0.13
 @export var medium_height_range := Vector2(0.22, 0.38)
 @export var tall_height_range := Vector2(0.42, 0.72)
 
+@export_group("Wind")
+@export var wind_direction := Vector2(0.85, 0.35)
+@export_range(0.0, 3.0, 0.01) var wind_speed := 0.85
+@export_range(0.0, 0.15, 0.001) var turf_wind_strength := 0.018
+@export_range(0.0, 0.15, 0.001) var medium_wind_strength := 0.045
+@export_range(0.0, 0.15, 0.001) var tall_wind_strength := 0.075
+
 var _terrain: Terrain3D
 var _biome: Node
 var _player: Node3D
@@ -83,23 +90,33 @@ func _initialize() -> void:
 	_tall_mesh_height = maxf(tall_mesh.get_aabb().size.y, 0.001)
 
 	multimesh = _create_multimesh(turf_mesh)
-	material_override = _create_material(turf_mesh, Color("1d7305"), Color("2b8409"), 0.007, 0.03, 0.04, 0.0)
+	material_override = _create_material(turf_mesh, Color("1d7305"), Color("2b8409"), turf_wind_strength, 0.03, 0.04, 0.0)
 	visibility_range_end = far_radius + 8.0
 	extra_cull_margin = 1.0
 
 	_medium_layer = _create_layer(
 		"MediumGrass",
 		medium_mesh,
-		_create_material(medium_mesh, Color("1a6807"), Color("28790b"), 0.02, 0.04, 0.05, 0.0),
+		_create_material(medium_mesh, Color("1a6807"), Color("28790b"), medium_wind_strength, 0.04, 0.05, 0.0),
 		48.0,
 		GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	)
 	_tall_layer = _create_layer(
 		"TallGrassAccents",
 		tall_mesh,
-		_create_material(tall_mesh, Color("195f09"), Color("246f0d"), 0.03, 0.05, 0.06, 0.0),
+		_create_material(tall_mesh, Color("195f09"), Color("246f0d"), tall_wind_strength, 0.05, 0.06, 0.0),
 		44.0,
 		GeometryInstance3D.SHADOW_CASTING_SETTING_ON
+	)
+	print(
+		"GRASS_WIND turf=%.3f medium=%.3f tall=%.3f speed=%.2f direction=(%.2f,%.2f)" % [
+			turf_wind_strength,
+			medium_wind_strength,
+			tall_wind_strength,
+			wind_speed,
+			wind_direction.x,
+			wind_direction.y,
+		]
 	)
 
 	_rebuild_field(Vector2(_player.global_position.x, _player.global_position.z))
@@ -224,6 +241,8 @@ func _create_material(
 	material.set_shader_parameter("base_color", base_color)
 	material.set_shader_parameter("tip_color", tip_color)
 	material.set_shader_parameter("wind_strength", wind_strength)
+	material.set_shader_parameter("wind_speed", wind_speed)
+	material.set_shader_parameter("wind_direction", wind_direction)
 	material.set_shader_parameter("patch_strength", patch_strength)
 	material.set_shader_parameter("instance_color_strength", instance_color_strength)
 	material.set_shader_parameter("emission_strength", emission_strength)
