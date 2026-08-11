@@ -12,10 +12,8 @@
 [ext_resource type="Texture2D" path="res://asset/Stylized Nature MegaKit[Standard]/glTF/Leaves.png" id="10_38fk8"]
 [ext_resource type="Texture2D" path="res://asset/Stylized Nature MegaKit[Standard]/glTF/Flowers.png" id="11_46d4i"]
 [ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/MapleTree_Bark.jpg" id="12_3vyka"]
-[ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/MapleTree_Bark_Normal.png" id="13_kx0bi"]
 [ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/MapleTree_Leaves.png" id="14_8gykb"]
 [ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/BirchTree_Bark.jpg" id="15_gp5bx"]
-[ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/BirchTree_Bark_Normal.png" id="16_y7krp"]
 [ext_resource type="Texture2D" path="res://asset/Ultimate Stylized Nature - May 2022/glTF/BirchTree_Leaves.png" id="17_hv37l"]
 [ext_resource type="Texture2D" path="res://asset/Stylized Nature MegaKit[Standard]/glTF/Leaf_Pine_C.png" id="18_nerei"]
 
@@ -1365,8 +1363,6 @@ resource_name = "MapleTree_Bark"
 cull_mode = 2
 albedo_texture = ExtResource("12_3vyka")
 roughness = 0.5
-normal_enabled = true
-normal_texture = ExtResource("13_kx0bi")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iu551"]
@@ -1643,8 +1639,6 @@ resource_name = "BirchTree_Bark"
 cull_mode = 2
 albedo_texture = ExtResource("15_gp5bx")
 roughness = 0.5
-normal_enabled = true
-normal_texture = ExtResource("16_y7krp")
 metadata/_gltf_primary_texture_coord = 0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t08nl"]
